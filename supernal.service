@@ -1,0 +1,36 @@
+# supernal.service - the binding circle
+#
+# The vessel is "ClockworkPI uConsole Keyboard" (the only uConsole node with
+# letter keys, per `sudo python3 supernal.py --scry`). Install with the
+# commands in GRIMOIRE.md.
+
+[Unit]
+Description=supernal - a bound familiar that summons the Super key (Right Alt + S)
+Documentation=file:///usr/local/lib/supernal/GRIMOIRE.md
+After=systemd-udevd.service
+Wants=systemd-udevd.service
+# uconsole-sleep unbinds the keyboard's USB device while the screen is off.
+# supernal then exits with an error and is restarted every RestartSec until
+# the keyboard returns; 0 disables the start rate limit so systemd never
+# gives up on it during a long sleep.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/lib/supernal/supernal.py --vessel "uConsole Keyboard"
+Restart=on-failure
+RestartSec=3
+
+# Needs root to read /dev/input/event* and write /dev/uinput.
+User=root
+
+# Light sandboxing. PrivateDevices is NOT used: it would hide /dev/input
+# and /dev/uinput. ProtectSystem=strict leaves /dev, /proc and /sys usable.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+
+[Install]
+WantedBy=multi-user.target
