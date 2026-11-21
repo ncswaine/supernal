@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Nick Swaine
+# SPDX-License-Identifier: MIT
 """supernal - summons the Super key the uConsole was never given.
 
 The familiar grabs the physical keyboard (EVIOCGRAB) so no other input

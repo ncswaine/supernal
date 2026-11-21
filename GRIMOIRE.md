@@ -207,3 +207,19 @@ Plain aliases exist for every flag: `--list`, `--device`, `--modifier`,
   sigil after waking. Ordinary keys work during that gap. uconsole-sleep
   grabs only the power key, so it never fights the familiar for the
   keyboard.
+
+## Credits & License
+
+supernal is released under the MIT License; see [LICENSE](LICENSE).
+Copyright (c) 2026 Nick Swaine.
+
+It calls upon, but does not include:
+
+- [python-evdev](https://github.com/gvalkov/python-evdev) (BSD-3-Clause),
+  for reading the keyboard and conjuring the uinput device
+- Python 3 (PSF License)
+- Linux input event codes from the kernel's userspace API
+  (GPL-2.0 WITH Linux-syscall-note, which permits use by userspace programs)
+
+Written with the help of Claude (Anthropic); designed, tested and
+maintained by the summoner.

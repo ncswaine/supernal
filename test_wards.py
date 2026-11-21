@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Nick Swaine
+# SPDX-License-Identifier: MIT
 """The wards: unit tests for the Familiar state machine.
 
 No hardware or python3-evdev needed. Run with:
